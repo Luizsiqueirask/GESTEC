@@ -1,19 +1,3 @@
-## Sobre
-
-
-	Foi realizado o desenvolvimento da API com laravel e algumas 
-	modificações exibição da api em Json como requisitado,
-	do arquivo original, devido alguma dificuldades pessoas
-	não conseguir concluir o sedasio, porém conseguir 
-	realizar alguns feito com realação o consumo da api.
-
-	Obs: Devido ter recriado a base varias vezes, eu não versionei
-	o projeto criado em questão. finalizando o projeto as:
-
-		- Horas: 22:30
-		- Data: 14/06/2021
-
-
 ## Lavavel API
 	
 	Abra o arquivo .env, no campo de nome do banco de dados mysql,
