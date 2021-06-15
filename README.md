@@ -1,70 +1,113 @@
-# GESTEC - Getting Started with Create React App
+## Sobre
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+	Foi realizado o desenvolvimento da API com laravel e algumas 
+	modificações exibição da api em Json como requisitado,
+	do arquivo original, devido alguma dificuldades pessoas
+	não conseguir concluir o sedasio, porém conseguir 
+	realizar alguns feito com realação o consumo da api.
 
-In the project directory, you can run:
+	Obs: Devido ter recriado a base varias vezes, eu não versionei
+	o projeto criado em questão. finalizando o projeto as:
 
-### `yarn start`
+		- Horas: 22:30
+		- Data: 14/06/2021
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Lavavel API
+	
+	Abra o arquivo .env, no campo de nome do banco de dados mysql,
+	informe o nome do banco de dados a qual será armazenado os dados,
+	por padrão do projeto esta configurado com o nome de 'challenge_api',
+	
+		DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=challenge_api
+		DB_USERNAME=root
+		DB_PASSWORD=senhaMysql
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	obs:todo passo a passo a segui, será resalizado dentro do diretório challenge_api, que se encontra dentro do diretório GESTEC 
+	depois de configurar a .env, iras realizar a instalação dos pacotes do composer e do npm.
+	Usando o terminal detro do diretório citado, digite os comando a seguir:
+		
+		- composer install
+		- npm install
 
-### `yarn build`
+	em seguida será realizado a migração do banco de dados juntamente com o 
+	carregamente dos dados par ao banco de dados.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+		- php artisan migrate 
+		- php artisan db:seed
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	em seguida confira as rotas disponíveis da api.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+		- php artisan route:list
 
-### `yarn eject`
+		+--------+----------+-----------------------+---------------+--------------------------------------------------+------------+
+		| Domain | Method   | URI                   | Name          | Action                                           | Middleware |
+		+--------+----------+-----------------------+---------------+--------------------------------------------------+------------+
+		|        | GET|HEAD | /                     |               | Closure                                          | web        |
+		|        | GET|HEAD | api/patient           | patient.index | App\Http\Controllers\API\PatientController@index | api        |
+		|        | GET|HEAD | api/patient/{patient} | patient.show  | App\Http\Controllers\API\PatientController@show  | api        |
+		|        | GET|HEAD | api/user              |               | Closure                                          | api        |
+		|        |          |                       |               |                                                  | auth:api   |
+		+--------+----------+-----------------------+---------------+--------------------------------------------------+------------+ 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	em seguida, execulte o serviço da api com o comando a seguir:
+		
+		- php artisan serve
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	nomalmente o seviço retorna um endereço http no localhot na porta 8000, como vemos a seguir:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+		- Starting Laravel development server: http://127.0.0.1:8000
+	
+	acessando api pela web, basta acessar o endereço da api desejada. como mostra no exemplo abaixo:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+		Exibi todos na lista json
+		- http://127.0.0.1:8000/api/patient/
 
-## Learn More
+		Exibi apenas o conteúdo número indicado. 
+		- http://127.0.0.1:8000/api/patient/1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## React JS
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+	Acessa o diretório challengeview para realizar o acesso as informações da API, a mesma se encontra dentro da pasta GESTEC.
+	ao abri o terminal no diretório, vamos execultar alguns comando a seguir:
+	
+	para instalar os pacote necessario ter node instalado no computador; Juntamente com um gerenciador de pacote.
 
-### Code Splitting
+		- yarn install
+		- npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+	após instalar, no mesmo terminal execulta o comando para ativar o servidor local no react.
 
-### Analyzing the Bundle Size
+		- yarn start
+		- npm run start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	
+## Desenvolvimento
 
-### Making a Progressive Web App
+	Projeto desenvolvido em detalhes foi Uma api com laravel. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+		- Controller API: PatientController
+		- Resource: PatientResource
+		- Model: Patient
+		- Migration Table: list_patients
+		- Seeders: PatientSeeder
+		- Rota api: Patient
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+	Projto desenvolvido em view react
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+		- Componetes
+			
+			- ListPatient
+			- ViewPatient
+			- Jumbotron
+			- LoadingAPI
+	
+## Comentario
+	
